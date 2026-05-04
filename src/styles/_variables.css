@@ -1,0 +1,17 @@
+:root {
+  /* Colores principales */
+  --color-primary: #F4B400;
+  --color-secondary: #212121;
+  --color-background: #F5F5F5;
+
+  /* Acciones */
+  --color-accent: #1E88E5;
+
+  /* Estados */
+  --color-success: #2E7D32;
+  --color-error: #D32F2F;
+
+  /* Texto */
+  --color-text: #212121;
+  --color-text-light: #757575;
+}

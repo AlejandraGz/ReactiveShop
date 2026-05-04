@@ -1,0 +1,52 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    box-shadow:
+        0 4px 6px 0 rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgb(0, 0, 0);
+    padding: 50px 40px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bolder;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.botones {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.icono-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icono-btn:hover {
+    transform: scale(1.1);
+}
+
+.boton {
+    padding-left: 20px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.boton:hover {
+    transform: scale(1.01);
+}
+
+.spacer {
+    flex: 1;
+}

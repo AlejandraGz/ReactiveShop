@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: CartPage
   },
   {
-    path: 'Confirmar-carrito',
+    path: 'confirmar-carrito',
     component: CheckoutPage
   },
   {

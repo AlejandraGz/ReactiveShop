@@ -1,0 +1,49 @@
+.footer {
+    padding: 0 40px;
+    background-color: var(--color-primary);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.contactanos,
+.mas-info {
+    display: flex;
+    flex-direction: column;
+}
+
+span,
+button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.icono-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--color-text);
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.icono-btn:hover {
+    opacity: 0.85;
+}
