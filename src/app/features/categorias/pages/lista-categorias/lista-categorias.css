@@ -1,0 +1,33 @@
+.lista-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.lista-categorias .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 0 0 15px;
+    border: 1px solid #3333;
+    border-radius: 10px;
+    box-shadow:
+        1px 2px 4px 0 #8b8b8b34,
+        1px 4px 10px -1px #2222223f;
+    transition: 0.3s ease;
+}
+
+.lista-categorias .card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.lista-categorias .card img {
+    width: 100%;
+    height: calc(200px - 40px);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}

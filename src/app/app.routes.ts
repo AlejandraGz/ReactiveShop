@@ -1,22 +1,31 @@
 import { Routes } from '@angular/router';
 
-import { ProductList } from './features/products/pages/product-list/product-list';
-import { CartPage } from './features/cart/pages/cart-page/cart-page';
+import { ListaProductos } from './features/productos/pages/lista-productos/lista-productos';
+import { ListaCategorias } from './features/categorias/pages/lista-categorias/lista-categorias';
+import { PaginaCarrito } from './features/carrito/pages/pagina-carrito/pagina-carrito';
 import { CheckoutPage } from './features/checkout/pages/checkout-page/checkout-page';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'productos',
+    redirectTo: 'categorias',
     pathMatch: 'full'
   },
   {
+    path: 'categorias',
+    component: ListaCategorias
+  },
+  {
+    path: 'categoria/:nombre/productos',
+    component: ListaProductos
+  },
+  {
     path: 'productos',
-    component: ProductList
+    component: ListaProductos
   },
   {
     path: 'carrito',
-    component: CartPage
+    component: PaginaCarrito
   },
   {
     path: 'confirmar-carrito',
@@ -24,6 +33,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'productos'
+    redirectTo: 'categorias'
   }
 ];

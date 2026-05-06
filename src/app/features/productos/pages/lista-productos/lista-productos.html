@@ -1,0 +1,9 @@
+@if (productos$) {
+<div class="lista-productos">
+    @for (producto of productos$ | async; track producto.id) {
+    <app-card-producto [producto]="producto"></app-card-producto>
+    }
+</div>
+}@else {
+<p>Cargando productos...</p>
+}

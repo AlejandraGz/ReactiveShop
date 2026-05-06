@@ -1,0 +1,14 @@
+<div class="card">
+    <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen">
+    <p class="precio">{{producto.precio | currency: 'COP' : '$ ' :'4.0' }}</p>
+    <h3 class="titulo">{{producto.nombre}} </h3>
+    <p class="descripcion"><b>{{producto.marca}}</b></p>
+    <p>{{producto.descripcion}}</p>
+    @if (producto.stock === 1) {
+    <p>Queda {{producto.stock}} unidad</p>
+    }@else if (producto.stock > 1) {
+    <p>Quedan {{producto.stock}} unidades</p>
+    }@else {
+    <p>Agotado</p>
+    }
+</div>

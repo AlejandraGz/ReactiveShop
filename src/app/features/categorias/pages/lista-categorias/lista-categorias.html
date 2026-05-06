@@ -1,0 +1,12 @@
+@if (categorias$) {
+<div class="lista-categorias">
+    @for (categoria of categorias$ | async; track categoria.id) {
+    <div class="card" [routerLink]="['/categoria', slugify(categoria.nombre),'productos']">
+        <img [src]="categoria.imagen" [alt]="categoria.nombre">
+        <h3>{{categoria.nombre}}</h3>
+    </div>
+    }
+</div>
+}@else {
+<p>Cargando categorias...</p>
+}
