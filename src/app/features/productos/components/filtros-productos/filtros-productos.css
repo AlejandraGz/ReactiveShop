@@ -1,0 +1,21 @@
+.filtros {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+.filtros .item-filtro {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.filtros .item-filtro label {
+    font-weight: bold;
+    opacity: 0.8;
+}
+.filtros .item-filtro .precio {
+    width: 150px;
+    cursor: pointer;
+    color: var(--color-primary) !important;
+    box-shadow: none;
+}

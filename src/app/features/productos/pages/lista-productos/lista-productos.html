@@ -1,4 +1,13 @@
 @if (productos$) {
+<app-filtros-productos
+    [mostrarFiltroCategoria]="mostrarFiltroCategoria"
+    [marcas]="marcasFiltradas$ | async"
+    (producto)="actualizarProducto($event)"
+    (categoria)="actualizarCategoria($event)"
+    (marca)="actualizarMarca($event)"
+    (precioMin)="actualizarPrecioMin($event)"
+    (precioMax)="actualizarPrecioMax($event)"
+></app-filtros-productos>
 <div class="lista-productos">
     @for (producto of productos$ | async; track producto.id) {
     <app-card-producto [producto]="producto"></app-card-producto>

@@ -1,0 +1,34 @@
+<div class="filtros">
+    <div class="item-filtro">
+        <br>
+        <input type="text" placeholder="Buscar producto" (input)="buscarProducto($event)">
+    </div>
+    @if(mostrarFiltroCategoria) {
+    <div class="item-filtro">
+        <label>Categorias</label>
+        <select name="" id="" (change)="buscarCategoria($event)">
+            <option value="">Todas</option>
+            @for (categoria of categorias$ | async; track categoria.id) {
+            <option [value]="categoria.id">{{categoria.nombre}}</option>
+            }
+        </select>
+    </div>
+    }
+    <div class="item-filtro">
+        <label>Marca</label>
+        <select name="" id="" (change)="buscarMarca($event)">
+            <option value="">Todas</option>
+            @for (marca of marcas ?? []; track $index) {
+            <option [value]="marca">{{marca}}</option>
+            }
+        </select>
+    </div>
+    <div class="item-filtro">
+        <label>Precio mínimo</label>
+        <input class="precio" type="range" min="0" max="500000">
+    </div>
+    <div class="item-filtro ">
+        <label>Precio máximo</label>
+        <input class="precio" type="range" min="0" max="500000">
+    </div>
+</div>

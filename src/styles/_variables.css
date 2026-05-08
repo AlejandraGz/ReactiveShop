@@ -6,6 +6,7 @@
 
   /* Acciones */
   --color-accent: #1E88E5;
+  --shadow: 0 2px 3px -1px #21212157;
 
   /* Estados */
   --color-success: #2E7D32;
@@ -14,4 +15,17 @@
   /* Texto */
   --color-text: #212121;
   --color-text-light: #757575;
+  user-select: none;
+}
+input, select {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow)
+}
+
+select {
+  width: 200px;
+  cursor: pointer;
 }
