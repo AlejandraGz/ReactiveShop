@@ -1,31 +1,48 @@
 :root {
-  /* Colores principales */
-  --color-primary: #ffe800;
-  --color-secondary: #212121;
-  --color-background: #F5F5F5;
+    /* Colores principales */
+    --color-primary: #ffe800;
+    --color-secondary: #212121;
+    --color-background: #f5f5f5;
+    --color-card-background: #fdfdfd;
+    --color-border: #a5a5a52f;
 
-  /* Acciones */
-  --color-accent: #1E88E5;
-  --shadow: 0 2px 3px -1px #21212157;
+    /* Acciones */
+    --color-accent: #1e88e5;
+    --shadow: 0 2px 3px -1px #21212157;
 
-  /* Estados */
-  --color-success: #2E7D32;
-  --color-error: #D32F2F;
+    /* Estados */
+    --color-success: #2e7d32;
+    --color-error: #d32f2f;
 
-  /* Texto */
-  --color-text: #212121;
-  --color-text-light: #757575;
-  user-select: none;
+    /* Texto */
+    --color-text: #212121;
+    --color-text-light: #757575;
 }
-input, select {
-  padding: 10px;
-  width: 300px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: var(--shadow)
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+input {
+    width: 300px;
 }
 
 select {
-  width: 200px;
-  cursor: pointer;
+    width: 200px;
+    cursor: pointer;
 }

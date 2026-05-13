@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.detalle-producto {
+    width: 80%;
+    min-height: 450px;
+    display: flex;
+    background-color: var(--color-card-background);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.item {
+    width: 50%;
+}

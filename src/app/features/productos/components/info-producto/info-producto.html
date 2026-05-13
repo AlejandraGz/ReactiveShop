@@ -1,0 +1,12 @@
+<div class="info-producto">
+    <h1 class="nombre">{{nombre}}</h1>
+    <p class="descripcion">{{descripcion}}</p>
+    <p class="stock">Unidades disponibles {{stock}}</p>
+    <p class="precio">{{precio | currency: 'COP' : '$ ' :'4.0'}}</p>
+    <div class="btn">
+        <button class="btn-agregar">
+            <span>Agregar al carrito</span>
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+    </div>
+</div>

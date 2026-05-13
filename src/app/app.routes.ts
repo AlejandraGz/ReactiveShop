@@ -4,6 +4,7 @@ import { ListaProductos } from './features/productos/pages/lista-productos/lista
 import { ListaCategorias } from './features/categorias/pages/lista-categorias/lista-categorias';
 import { PaginaCarrito } from './features/carrito/pages/pagina-carrito/pagina-carrito';
 import { CheckoutPage } from './features/checkout/pages/checkout-page/checkout-page';
+import { DetalleProducto } from './features/productos/pages/detalle-producto/detalle-producto';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'productos',
     component: ListaProductos
+  },
+  {
+    path: 'producto/:nombre',
+    component: DetalleProducto
   },
   {
     path: 'carrito',
