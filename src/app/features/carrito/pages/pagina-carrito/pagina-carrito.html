@@ -1,7 +1,20 @@
 @if(productos) {
-    <div class="carrito">
-        @for(p of productos; track $index){
-            <p>{{p.nombre}}</p>
-        }
+<div class="page carrito">
+    <h1>Carrito de compras</h1>
+    <div class="titulos">
+        <h3>Productos</h3>
+        <h3>Subtotal</h3>
     </div>
+    @for(p of productos; track $index){
+    <div class="producto-subtotal">
+        <div class="producto" >
+            <img [src]="p.imagen" alt="">
+            <p>{{p.nombre}}</p>
+        </div>
+        <div class="subtotal">
+            <p>{{p.precio}}</p>
+        </div>
+    </div>
+    }
+</div>
 }

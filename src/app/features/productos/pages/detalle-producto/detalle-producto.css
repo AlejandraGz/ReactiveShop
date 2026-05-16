@@ -17,7 +17,7 @@
     box-shadow: var(--shadow);
     overflow: hidden;
     max-height: 500px;
-    max-width: 70%;
+    max-width: 75%;
 }
 
 .item {
@@ -25,10 +25,10 @@
     max-height: 500px;
 }
 
-.carrito {
-    width: 350px;
-    min-width: 350px;
-    height: 100vh;
+.sidebar-carrito {
+    width: 25%;
+    min-width: 400px;
+    height: calc(100vh - 100px);
 
     position: sticky;
     top: 0;
@@ -38,7 +38,6 @@
     border-left: 1px solid var(--color-border);
     box-shadow: var(--shadow-sidebar);
 
-    padding: 20px;
     overflow-y: auto;
 
     animation: aparecerCarrito 0.7s ease;

@@ -1,7 +1,75 @@
 @if(productos) {
-    <div class="carrito">
-        @for(p of productos; track $index){
-            <p>{{p.nombre}}</p>
-        }
+<div class="page carrito">
+
+    <div class="cerrar-carrito">
+        <button class="btn-cerrar-carrito">✕</button>
     </div>
+
+    <table class="carrito-tabla">
+        <thead class="carrito-header">
+            <tr>
+                <th><h3>Producto</h3></th>
+                <th><h3>Subtotal</h3></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(p of productos; track p.id) {
+            <tr class="carrito-item">
+
+                <td class="carrito-producto">
+                    <div class="producto" [routerLink]="['/producto', slugify(p.nombre)]">
+
+                        <img [src]="p.imagen" [alt]="p.nombre" class="producto-imagen" >
+
+                        <div class="producto-info">
+
+                            <p class="producto-nombre"> {{ p.nombre }} </p>
+
+                            <div class="producto-cantidad">
+                                <button class="cantidad-btn">−</button>
+                                <span class="cantidad-numero"> 1 </span>
+                                <button class="cantidad-btn">+</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </td>
+
+                <td class="carrito-subtotal">
+                    <div class="subtotal">
+                        <p>{{ p.precio | currency:'$ ':'symbol':'1.0-0' }}</p>
+                    </div>
+                </td>
+
+                <td class="carrito-eliminar"> <mat-icon>delete</mat-icon> </td>
+            </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr class="carrito-footer">
+
+                <td><h2>Total</h2></td>
+
+                <td class="carrito-subtotal">
+                    <h2>{{ totalCarrito | currency:'$ ':'symbol':'1.0-0' }}</h2>
+                </td>
+
+                <td></td>
+
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>
+}
+@else {
+<div class="carrito-vacio">
+    <h2>Tu carrito está vacío</h2>
+    <p>Agrega productos para comenzar.</p>
+</div>
 }
