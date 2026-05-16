@@ -3,8 +3,8 @@
     justify-content: space-between;
     background-color: var(--color-primary);
     box-shadow:
-        0 4px 6px 0 rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgb(0, 0, 0);
+        inset 4px 0 6px 0 rgba(0, 0, 0, 0.1),
+        inset 2px 0 4px -1px rgba(119, 119, 119, 0.219);
     padding: 50px 40px;
 }
 
