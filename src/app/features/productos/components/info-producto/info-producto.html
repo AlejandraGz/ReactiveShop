@@ -4,7 +4,7 @@
     <p class="stock">Unidades disponibles {{stock}}</p>
     <p class="precio">{{precio | currency: 'COP' : '$ ' :'4.0'}}</p>
     <div class="btn">
-        <button class="btn-agregar">
+        <button class="btn-agregar" (click)="agregarProducto()">
             <span>Agregar al carrito</span>
             <mat-icon>shopping_cart</mat-icon>
         </button>

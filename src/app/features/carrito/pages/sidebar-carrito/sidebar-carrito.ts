@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../../../models/producto.model';
 import { Carrito } from '../../services/carrito';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-pagina-carrito',
-  imports: [CommonModule],
-  templateUrl: './pagina-carrito.html',
-  styleUrl: './pagina-carrito.css',
+  selector: 'app-sidebar-carrito',
+  imports: [],
+  templateUrl: './sidebar-carrito.html',
+  styleUrl: './sidebar-carrito.css',
 })
-export class PaginaCarrito implements OnInit {
+export class SidebarCarrito implements OnInit {
   productos: Producto[] = [];
   constructor(private carritoService: Carrito) { }
 

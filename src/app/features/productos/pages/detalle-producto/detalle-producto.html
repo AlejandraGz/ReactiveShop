@@ -3,9 +3,12 @@
     <div class="detalle-producto">
         <app-imagen-producto class="item imagen-producto" [imagen]="producto.imagen"></app-imagen-producto>
         <app-info-producto class="item info-producto" [nombre]="producto.nombre" [precio]="producto.precio"
-            [descripcion]="producto.descripcion" [stock]="producto.stock">
+            [descripcion]="producto.descripcion" [stock]="producto.stock" [producto]="producto">
         </app-info-producto>
     </div>
+    @if (mostrarMenuCarrito) {
+        <app-sidebar-carrito class="carrito"></app-sidebar-carrito>
+    }
 
 </div>
 }
