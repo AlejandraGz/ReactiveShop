@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../../../models/producto.model';
 import { Carrito } from '../../services/carrito';
 import { CommonModule } from '@angular/common';
+import { ItemCarrito } from '../../models/carrito.model';
 
 @Component({
   selector: 'app-pagina-carrito',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './pagina-carrito.css',
 })
 export class PaginaCarrito implements OnInit {
-  productos: Producto[] = [];
+  productos: ItemCarrito[] = [];
   constructor(private carritoService: Carrito) { }
 
   ngOnInit() {

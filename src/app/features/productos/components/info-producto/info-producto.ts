@@ -14,7 +14,7 @@ export class InfoProducto {
   @Input() nombre: string | null = '';
   @Input() precio: number | null = null;
   @Input() descripcion: string | null = '';
-  @Input() stock: number | null = null;
+  @Input() stock!: number;
   @Input() producto!: Producto;
 
   constructor(private carritoServicio: Carrito) { }

@@ -43,6 +43,8 @@
 .carrito-eliminar {
     width: 40px;
     text-align: right;
+    background: none;
+    border: none;
 }
 
 .carrito-header {

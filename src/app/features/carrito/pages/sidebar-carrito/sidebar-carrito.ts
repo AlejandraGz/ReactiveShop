@@ -4,6 +4,7 @@ import { Carrito } from '../../services/carrito';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
+import { ItemCarrito } from '../../models/carrito.model';
 
 
 @Component({
@@ -16,15 +17,21 @@ import { MatIcon } from "@angular/material/icon";
   ]
 })
 export class SidebarCarrito implements OnInit {
-  productos: Producto[] = [];
+  productos: ItemCarrito[] = [];
+  cantidad: number = 0;
   totalCarrito: number = 0;
-  constructor(private carritoService: Carrito) { }
+  constructor(
+    public carritoService: Carrito
+  ) { }
 
   ngOnInit() {
     console.log('PaginaCarrito iniciado');
     this.carritoService.productos.subscribe(p => {
       this.productos = p;
     });
+  }
+  borrarProductoCarrito(producto: Producto) {
+    this.carritoService.borrarProducto(producto)
   }
 
   slugify(text: string): string {

@@ -15,22 +15,22 @@
         </thead>
 
         <tbody>
-            @for(p of productos; track p.id) {
+            @for(item of productos; track item.producto.id) {
             <tr class="carrito-item">
 
                 <td class="carrito-producto">
-                    <div class="producto" [routerLink]="['/producto', slugify(p.nombre)]">
+                    <div class="producto">
 
-                        <img [src]="p.imagen" [alt]="p.nombre" class="producto-imagen" >
+                        <img [src]="item.producto.imagen" [alt]="item.producto.nombre" class="producto-imagen" >
 
                         <div class="producto-info">
 
-                            <p class="producto-nombre"> {{ p.nombre }} </p>
+                            <p class="producto-nombre" [routerLink]="['/producto', slugify(item.producto.nombre)]" > {{ item.producto.nombre }} </p>
 
                             <div class="producto-cantidad">
-                                <button class="cantidad-btn">−</button>
-                                <span class="cantidad-numero"> 1 </span>
-                                <button class="cantidad-btn">+</button>
+                                <button class="cantidad-btn" (click)="carritoService.restarCantidadProducto(item.producto)">−</button>
+                                <span class="cantidad-numero"> {{ item.cantidad }} </span>
+                                <button class="cantidad-btn" (click)="carritoService.agregarProducto(item.producto)">+</button>
                             </div>
 
                         </div>
@@ -40,11 +40,11 @@
 
                 <td class="carrito-subtotal">
                     <div class="subtotal">
-                        <p>{{ p.precio | currency:'$ ':'symbol':'1.0-0' }}</p>
+                        <p>{{ item.producto.precio | currency:'$ ':'symbol':'1.0-0' }}</p>
                     </div>
                 </td>
 
-                <td class="carrito-eliminar"> <mat-icon>delete</mat-icon> </td>
+                <td><button class="carrito-eliminar" (click)="borrarProductoCarrito(item.producto)"> <mat-icon>delete</mat-icon> </button></td>
             </tr>
             }
         </tbody>

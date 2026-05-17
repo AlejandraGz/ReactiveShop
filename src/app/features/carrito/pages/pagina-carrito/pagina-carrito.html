@@ -5,14 +5,14 @@
         <h3>Productos</h3>
         <h3>Subtotal</h3>
     </div>
-    @for(p of productos; track $index){
+    @for(item of productos; track item.producto.id){
     <div class="producto-subtotal">
         <div class="producto" >
-            <img [src]="p.imagen" alt="">
-            <p>{{p.nombre}}</p>
+            <img [src]="item.producto.imagen" alt="">
+            <p>{{item.producto.nombre}}</p>
         </div>
         <div class="subtotal">
-            <p>{{p.precio}}</p>
+            <p>{{item.producto.precio}}</p>
         </div>
     </div>
     }
