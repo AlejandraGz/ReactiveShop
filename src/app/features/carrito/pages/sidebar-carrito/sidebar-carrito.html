@@ -8,8 +8,12 @@
     <table class="carrito-tabla">
         <thead class="carrito-header">
             <tr>
-                <th><h3>Producto</h3></th>
-                <th><h3>Subtotal</h3></th>
+                <th>
+                    <h3>Producto</h3>
+                </th>
+                <th>
+                    <h3>Subtotal</h3>
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -21,16 +25,19 @@
                 <td class="carrito-producto">
                     <div class="producto">
 
-                        <img [src]="item.producto.imagen" [alt]="item.producto.nombre" class="producto-imagen" >
+                        <img [src]="item.producto.imagen" [alt]="item.producto.nombre" class="producto-imagen">
 
                         <div class="producto-info">
 
-                            <p class="producto-nombre" [routerLink]="['/producto', slugify(item.producto.nombre)]" > {{ item.producto.nombre }} </p>
+                            <p class="producto-nombre" [routerLink]="['/producto', slugify(item.producto.nombre)]"> {{
+                                item.producto.nombre }} </p>
 
                             <div class="producto-cantidad">
-                                <button class="cantidad-btn" (click)="cantidadProducto('restar', item.producto)">−</button>
+                                <button class="cantidad-btn"
+                                    (click)="cantidadProducto('restar', item.producto)">−</button>
                                 <span class="cantidad-numero"> {{ item.cantidad }} </span>
-                                <button class="cantidad-btn" (click)="cantidadProducto('sumar', item.producto)">+</button>
+                                <button class="cantidad-btn"
+                                    (click)="cantidadProducto('sumar', item.producto)">+</button>
                             </div>
 
                         </div>
@@ -41,22 +48,25 @@
                 <td class="carrito-subtotal">
                     <div class="subtotal">
                         <p>{{ item.producto.precio | currency:'$ ':'symbol':'1.0-0' }}</p>
+                        <button class="carrito-eliminar" (click)="borrarProductoCarrito(item.producto)">
+                            <mat-icon>delete</mat-icon> </button>
                     </div>
                 </td>
 
-                <td><button class="carrito-eliminar" (click)="borrarProductoCarrito(item.producto)"> <mat-icon>delete</mat-icon> </button></td>
             </tr>
             }
         </tbody>
-
         <tfoot>
-
             <tr class="carrito-footer">
 
-                <td><h2>Total</h2></td>
+                <td>
+                    <h2>Total</h2>
+                </td>
 
-                <td class="carrito-subtotal">
-                    <h2>{{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}</h2>
+                <td class="carrito-subtotal carrito-subtotal-total">
+                    <h2 class="carrito-total-valor">
+                        {{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}
+                    </h2>
                 </td>
 
                 <td></td>
