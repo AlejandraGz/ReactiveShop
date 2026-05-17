@@ -52,4 +52,9 @@ export class Carrito {
     this.carritoProductos = this.carritoProductos.filter(p => p.producto !== producto);
     this._productos.next(this.carritoProductos);
   }
+  totalCarrito() {
+      return this.carritoProductos.reduce(
+        (total, item) => total + item.producto.precio * item.cantidad, 0
+      )
+  }
 }

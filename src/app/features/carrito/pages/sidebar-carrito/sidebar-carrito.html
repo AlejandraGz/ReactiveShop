@@ -28,9 +28,9 @@
                             <p class="producto-nombre" [routerLink]="['/producto', slugify(item.producto.nombre)]" > {{ item.producto.nombre }} </p>
 
                             <div class="producto-cantidad">
-                                <button class="cantidad-btn" (click)="carritoService.restarCantidadProducto(item.producto)">−</button>
+                                <button class="cantidad-btn" (click)="cantidadProducto('restar', item.producto)">−</button>
                                 <span class="cantidad-numero"> {{ item.cantidad }} </span>
-                                <button class="cantidad-btn" (click)="carritoService.agregarProducto(item.producto)">+</button>
+                                <button class="cantidad-btn" (click)="cantidadProducto('sumar', item.producto)">+</button>
                             </div>
 
                         </div>
@@ -50,12 +50,13 @@
         </tbody>
 
         <tfoot>
+
             <tr class="carrito-footer">
 
                 <td><h2>Total</h2></td>
 
                 <td class="carrito-subtotal">
-                    <h2>{{ totalCarrito | currency:'$ ':'symbol':'1.0-0' }}</h2>
+                    <h2>{{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}</h2>
                 </td>
 
                 <td></td>

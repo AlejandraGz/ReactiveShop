@@ -18,10 +18,8 @@ import { ItemCarrito } from '../../models/carrito.model';
 })
 export class SidebarCarrito implements OnInit {
   productos: ItemCarrito[] = [];
-  cantidad: number = 0;
-  totalCarrito: number = 0;
   constructor(
-    public carritoService: Carrito
+    private carritoService: Carrito
   ) { }
 
   ngOnInit() {
@@ -34,6 +32,16 @@ export class SidebarCarrito implements OnInit {
     this.carritoService.borrarProducto(producto)
   }
 
+  totalCarrito() {
+    return this.carritoService.totalCarrito()
+  }
+  cantidadProducto(opcion: string, producto: Producto) {
+    if(opcion === 'sumar'){
+      this.carritoService.agregarProducto(producto)
+    } else {
+      this.carritoService.restarCantidadProducto(producto)
+    }
+  }
   slugify(text: string): string {
     return text
       .toLowerCase()

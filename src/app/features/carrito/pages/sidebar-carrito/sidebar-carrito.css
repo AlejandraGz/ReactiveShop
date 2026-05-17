@@ -36,8 +36,10 @@
 }
 
 .carrito-subtotal {
-    width: 120px;
+    width: 140px;
+    min-width: 140px;
     text-align: right;
+    white-space: nowrap;
 }
 
 .carrito-eliminar {
@@ -79,7 +81,6 @@
     align-items: center;
     gap: 15px;
 
-    flex: 1;
 }
 
 .producto-imagen {
@@ -98,6 +99,7 @@
 
 .producto-nombre {
     margin: 0;
+    word-break: break-word;
 }
 .producto-nombre:hover {
     cursor: pointer;
