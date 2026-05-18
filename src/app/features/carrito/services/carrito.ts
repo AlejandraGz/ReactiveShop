@@ -57,4 +57,9 @@ export class Carrito {
         (total, item) => total + item.producto.precio * item.cantidad, 0
       )
   }
+  totalCantidadProductos() {
+    return this.carritoProductos.reduce(
+      (total, item) => total + item.cantidad, 0
+    )
+  }
 }
