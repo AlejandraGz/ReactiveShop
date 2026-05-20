@@ -1,14 +1,11 @@
 .carrito {
-    padding: 20px 30px;
-    margin: auto;
-    margin-bottom: 40px;
-
     max-width: 400px;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--navbar-height));
+    padding: 20px 40px;
 
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 35px;
 }
 
 .carrito-titulo {

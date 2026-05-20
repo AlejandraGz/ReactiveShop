@@ -1,47 +1,64 @@
 .container {
     width: 100%;
-    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+}
+
+.detalle-wrapper {
     display: flex;
     justify-content: center;
-    background-color: var(--color-background);
+    flex: 1;
+    padding:
+        calc(var(--navbar-height) + 30px)
+        30px
+        40px;
 }
 
 .detalle-producto {
-    flex: 1;
-    min-height: 450px;
+    width: 100%;
+    max-width: 1000px;
+
     display: flex;
-    margin: 50px;
+
+    min-height: 450px;
+
     background-color: var(--color-card-background);
+
     border: 1px solid var(--color-border);
     border-radius: 10px;
+
     box-shadow: var(--shadow);
+
     overflow: hidden;
+
     max-height: 500px;
-    max-width: 75%;
 }
 
 .item {
-    width: 50%;
+    flex: 1;
     max-height: 500px;
 }
 
 .sidebar-carrito {
-    width: 25%;
-    min-width: 400px;
-    height: calc(100vh - 100px);
+    width: 400px;
+    flex-shrink: 0;
+
+    height: calc(100vh - var(--navbar-height));
 
     position: sticky;
-    top: 0;
-    right: 0;
+    top: var(--navbar-height);
 
     background-color: var(--color-card-background);
+
     border-left: 1px solid var(--color-border);
+
     box-shadow: var(--shadow-sidebar);
 
     overflow-y: auto;
 
     animation: aparecerCarrito 0.7s ease;
 }
+
 @keyframes aparecerCarrito {
 
     0% {

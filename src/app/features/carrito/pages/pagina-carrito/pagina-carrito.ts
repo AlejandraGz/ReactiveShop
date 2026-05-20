@@ -13,6 +13,7 @@ import { ItemCarrito } from '../../models/carrito.model';
   templateUrl: './pagina-carrito.html',
   styleUrls: [
     './pagina-carrito.css',
+    '../../../../../styles/_variables.css'
   ]
 })
 export class PaginaCarrito implements OnInit {

@@ -1,14 +1,25 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
     height: var(--navbar-height);
+    width: 100vw;
+
+    padding: 0 40px;
+
     background-color: var(--color-primary);
+
     box-shadow:
         inset 4px 0 6px 0 rgba(0, 0, 0, 0.1),
         inset 2px 0 4px -1px rgba(119, 119, 119, 0.219);
-    padding: 50px 40px;
-}
 
+    z-index: 1000;
+}
 .logo {
     font-size: 28px;
     font-weight: bolder;

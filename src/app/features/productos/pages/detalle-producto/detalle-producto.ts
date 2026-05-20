@@ -12,7 +12,10 @@ import { SidebarCarrito } from "../../../carrito/pages/sidebar-carrito/sidebar-c
   selector: 'app-detalle-producto',
   imports: [CommonModule, ImagenProducto, InfoProducto, SidebarCarrito],
   templateUrl: './detalle-producto.html',
-  styleUrls: ['./detalle-producto.css'],
+  styleUrls: [
+    './detalle-producto.css',
+    '../../../../../styles/_variables.css'
+  ],
 })
 export class DetalleProducto implements OnInit {
 

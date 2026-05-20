@@ -7,7 +7,9 @@ import { RouterLink } from '@angular/router';
   selector: 'app-card-producto',
   imports: [CommonModule, RouterLink],
   templateUrl: './card-producto.html',
-  styleUrl: './card-producto.css',
+  styleUrls: [
+    './card-producto.css',
+    '../../../../../styles/_variables.css']
 })
 export class CardProducto {
   @Input() producto!: Producto;
