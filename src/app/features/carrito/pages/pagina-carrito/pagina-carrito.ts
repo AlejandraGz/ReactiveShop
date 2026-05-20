@@ -23,7 +23,6 @@ export class PaginaCarrito implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.productos);
     this.carritoService.productos.subscribe(p => {
       this.productos = p;
     });

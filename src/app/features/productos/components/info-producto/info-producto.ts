@@ -20,7 +20,6 @@ export class InfoProducto {
   constructor(private carritoServicio: Carrito) { }
 
   agregarProducto() {
-    console.log('info-producto:' + this.producto);
     this.carritoServicio.agregarProducto(this.producto);
   }
 }

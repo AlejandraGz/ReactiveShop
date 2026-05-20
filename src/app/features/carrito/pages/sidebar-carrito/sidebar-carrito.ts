@@ -23,7 +23,6 @@ export class SidebarCarrito implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('PaginaCarrito iniciado');
     this.carritoService.productos.subscribe(p => {
       this.productos = p;
     });
