@@ -11,8 +11,13 @@ export class Carrito {
 
   private _productos: BehaviorSubject<ItemCarrito[]> = new BehaviorSubject<ItemCarrito[]>([]);
 
-  constructor() { }
-
+  constructor() {
+    const productosGuardados = localStorage.getItem('Productos');
+    if (productosGuardados) {
+      this.carritoProductos = JSON.parse(productosGuardados);
+      this._productos.next(this.carritoProductos);
+    }
+  }
   get productos() {
     return this._productos.asObservable();
   }
@@ -34,7 +39,7 @@ export class Carrito {
       });
 
     }
-    this._productos.next(this.carritoProductos);
+    this.actualizarCarrito();
   }
   restarCantidadProducto(producto: Producto) {
     const itemCarrito = this.carritoProductos.find(p => p.producto.id === producto.id);
@@ -46,20 +51,26 @@ export class Carrito {
     if (itemCarrito.cantidad <= 0) {
       this.carritoProductos = this.carritoProductos.filter(p => p.producto.id !== producto.id)
     }
-    this._productos.next(this.carritoProductos);
+    this.actualizarCarrito();
   }
   borrarProducto(producto: Producto) {
     this.carritoProductos = this.carritoProductos.filter(p => p.producto !== producto);
-    this._productos.next(this.carritoProductos);
+    this.actualizarCarrito();
   }
   totalCarrito() {
-      return this.carritoProductos.reduce(
-        (total, item) => total + item.producto.precio * item.cantidad, 0
-      )
+    return this.carritoProductos.reduce(
+      (total, item) => total + item.producto.precio * item.cantidad, 0
+    )
   }
   totalCantidadProductos() {
     return this.carritoProductos.reduce(
       (total, item) => total + item.cantidad, 0
     )
+  }
+  private actualizarCarrito() {
+
+    localStorage.setItem( 'Productos', JSON.stringify(this.carritoProductos));
+    this._productos.next(this.carritoProductos);
+
   }
 }
