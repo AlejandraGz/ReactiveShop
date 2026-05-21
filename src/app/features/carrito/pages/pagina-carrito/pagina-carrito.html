@@ -91,51 +91,7 @@
 
     </div>
 
-    <div class="carrito-total">
-
-        <h2 class="titulo">Resumen del pedido</h2>
-
-        <div class="resumen-contenido">
-
-            <div class="cupon">
-
-                <input
-                    type="text"
-                    placeholder="Cupón de descuento">
-
-                <button class="btn aplicar">
-                    Aplicar
-                </button>
-
-            </div>
-
-            <div class="resumen-linea">
-                <strong>Cantidad de productos: </strong>
-                <strong>{{ totalCantidadProductos() }}</strong>
-            </div>
-
-            <div class="resumen-linea mensaje-envio">
-                <span>Envío gratis en compras mayores a $150.000</span>
-            </div>
-
-            <div class="linea-separadora"></div>
-
-            <div class="resumen-total">
-                <h2>Total</h2>
-                <h2>{{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}</h2>
-            </div>
-
-            <button class="btn">
-                Pagar ahora
-            </button>
-
-            <p class="texto-seguridad">
-                ✓ Pago 100% seguro
-            </p>
-
-        </div>
-
-    </div>
+    <app-resumen-pedido class="carrito-total"></app-resumen-pedido>
 
 </div>
 

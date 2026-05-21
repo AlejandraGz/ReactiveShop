@@ -1,0 +1,106 @@
+.checkout {
+    max-width: 900px;
+    margin-bottom: 30px;
+    padding: 40px;
+    display: flex;
+
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+
+    background: var(--color-card-background);
+    box-shadow: var(--shadow);
+}
+
+form,
+.seccion,
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    gap: 35px;
+    width: 70%;
+    overflow: hidden;
+}
+
+.seccion,
+.form {
+    gap: 15px;
+}
+
+h2,
+p {
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+
+    opacity: 0.8;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    background: var(--color-background);
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.nombre,
+.direccion {
+    display: grid;
+    gap: 20px;
+}
+
+.nombre {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.direccion {
+    grid-template-columns: 2fr 1fr;
+}
+
+.forma-pago {
+    padding: 18px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    background: var(--color-background);
+}
+
+.forma-pago p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.btn-amarillo {
+    width: 100%;
+    max-width: 250px;
+}
+
+.btn-amarillo:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.btn-amarillo:active {
+    transform: scale(0.98);
+}

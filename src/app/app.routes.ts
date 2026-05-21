@@ -33,7 +33,7 @@ export const routes: Routes = [
     component: PaginaCarrito
   },
   {
-    path: 'confirmar-carrito',
+    path: 'checkout',
     component: CheckoutPage
   },
   {

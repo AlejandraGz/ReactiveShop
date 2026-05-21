@@ -1,0 +1,22 @@
+.checkout-page {
+    display: flex;
+    gap: 35px;
+}
+app-formulario-checkout {
+    width: 70%;
+}
+
+app-resumen-pedido {
+    width: 30%;
+    height: fit-content;
+
+    padding: 30px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    background-color: var(--color-card-background);
+
+    position: sticky;
+    top: 30px;
+}

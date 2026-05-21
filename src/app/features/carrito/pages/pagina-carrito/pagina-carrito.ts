@@ -5,11 +5,12 @@ import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
 import { ItemCarrito } from '../../models/carrito.model';
+import { ResumenPedido } from "../../components/resumen-pedido/resumen-pedido";
 
 
 @Component({
   selector: 'app-pagina-carrito',
-  imports: [CurrencyPipe, RouterLink, MatIcon],
+  imports: [CurrencyPipe, RouterLink, MatIcon, ResumenPedido],
   templateUrl: './pagina-carrito.html',
   styleUrls: [
     './pagina-carrito.css',
@@ -29,13 +30,6 @@ export class PaginaCarrito implements OnInit {
   }
   borrarProductoCarrito(producto: Producto) {
     this.carritoService.borrarProducto(producto)
-  }
-
-  totalCarrito() {
-    return this.carritoService.totalCarrito()
-  }
-  totalCantidadProductos(){
-    return this.carritoService.totalCantidadProductos();
   }
   cantidadProducto(opcion: string, producto: Producto) {
     if (opcion === 'sumar') {
