@@ -57,6 +57,10 @@ export class Carrito {
     this.carritoProductos = this.carritoProductos.filter(p => p.producto !== producto);
     this.actualizarCarrito();
   }
+  limpiarCarrito() {
+    this.carritoProductos = [];
+    this.actualizarCarrito();
+  }
   totalCarrito() {
     return this.carritoProductos.reduce(
       (total, item) => total + item.producto.precio * item.cantidad, 0
@@ -69,7 +73,7 @@ export class Carrito {
   }
   private actualizarCarrito() {
 
-    localStorage.setItem( 'Productos', JSON.stringify(this.carritoProductos));
+    localStorage.setItem('Productos', JSON.stringify(this.carritoProductos));
     this._productos.next(this.carritoProductos);
 
   }

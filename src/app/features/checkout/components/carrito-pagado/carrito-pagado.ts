@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Carrito } from '../../../carrito/services/carrito';
 
 @Component({
   selector: 'app-carrito-pagado',
@@ -7,4 +8,9 @@ import { RouterLink } from '@angular/router';
   templateUrl: './carrito-pagado.html',
   styleUrl: './carrito-pagado.css',
 })
-export class CarritoPagado {}
+export class CarritoPagado {
+  constructor(private carritoService: Carrito ) {}
+  limpiarCarrito() {
+    this.carritoService.limpiarCarrito();
+  }
+}
