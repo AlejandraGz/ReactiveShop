@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { FormularioCheckout } from "../../formulario-checkout/formulario-checkout";
-import { ResumenPedido } from "../../../carrito/components/resumen-pedido/resumen-pedido";
+import { FormularioCheckout } from "../../components/formulario-checkout/formulario-checkout";
 
 @Component({
   selector: 'app-checkout-page',
-  imports: [FormularioCheckout, ResumenPedido],
+  imports: [FormularioCheckout, ],
   templateUrl: './checkout-page.html',
   styleUrl: './checkout-page.css',
 })

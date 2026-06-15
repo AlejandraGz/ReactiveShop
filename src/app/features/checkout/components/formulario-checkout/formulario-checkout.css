@@ -1,5 +1,7 @@
 .checkout {
+    width: 100%;
     max-width: 900px;
+    height: 100%;
     margin-bottom: 30px;
     padding: 40px;
     display: flex;
@@ -20,8 +22,7 @@ form,
 
 form {
     gap: 35px;
-    width: 70%;
-    overflow: hidden;
+    width: 100%;
 }
 
 .seccion,
@@ -94,13 +95,4 @@ input {
 .btn-amarillo {
     width: 100%;
     max-width: 250px;
-}
-
-.btn-amarillo:hover {
-    transform: translateY(-2px);
-    opacity: 0.95;
-}
-
-.btn-amarillo:active {
-    transform: scale(0.98);
 }
