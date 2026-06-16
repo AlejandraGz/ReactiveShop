@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../../../models/producto.model';
 import { Carrito } from '../../services/carrito';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
 import { ItemCarrito } from '../../models/carrito.model';
@@ -10,23 +10,21 @@ import { ResumenPedido } from "../../components/resumen-pedido/resumen-pedido";
 
 @Component({
   selector: 'app-pagina-carrito',
-  imports: [CurrencyPipe, RouterLink, MatIcon, ResumenPedido],
+  imports: [CurrencyPipe, AsyncPipe, RouterLink, MatIcon, ResumenPedido],
   templateUrl: './pagina-carrito.html',
   styleUrls: [
     './pagina-carrito.css',
     '../../../../../styles/_variables.css'
   ]
 })
-export class PaginaCarrito implements OnInit {
-  productos: ItemCarrito[] = [];
+export class PaginaCarrito {
+  productos$;
+  cantidadProductos$;
   constructor(
     private carritoService: Carrito
-  ) { }
-
-  ngOnInit() {
-    this.carritoService.productos.subscribe(p => {
-      this.productos = p;
-    });
+  ) {
+    this.productos$ = carritoService.productos;
+    this.cantidadProductos$ = carritoService.cantidadProductos$;
   }
   borrarProductoCarrito(producto: Producto) {
     this.carritoService.borrarProducto(producto)

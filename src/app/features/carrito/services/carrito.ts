@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producto } from '../../../models/producto.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { ItemCarrito } from '../models/carrito.model';
 
 @Injectable({
@@ -61,16 +61,18 @@ export class Carrito {
     this.carritoProductos = [];
     this.actualizarCarrito();
   }
-  totalCarrito() {
-    return this.carritoProductos.reduce(
-      (total, item) => total + item.producto.precio * item.cantidad, 0
-    )
-  }
-  totalCantidadProductos() {
-    return this.carritoProductos.reduce(
-      (total, item) => total + item.cantidad, 0
-    )
-  }
+  readonly total$ = this.productos.pipe(
+    map(productos =>
+      productos.reduce(
+        (total, item) => total + item.producto.precio * item.cantidad,
+        0
+      )
+    ));
+  readonly cantidadProductos$ = this.productos.pipe(
+    map(productos =>
+      productos.reduce(
+        (total, item) => total + item.cantidad, 0
+      )))
   private actualizarCarrito() {
 
     localStorage.setItem('Productos', JSON.stringify(this.carritoProductos));

@@ -1,4 +1,4 @@
-@if(productos) {
+@if(productos$) {
 <div class="carrito">
 
     <div class="cerrar-carrito">
@@ -19,7 +19,7 @@
         </thead>
 
         <tbody>
-            @for(item of productos; track item.producto.id) {
+            @for(item of (productos$ | async); track item.producto.id) {
             <tr class="carrito-item">
 
                 <td class="carrito-producto">
@@ -65,7 +65,7 @@
 
                 <td class="carrito-subtotal carrito-subtotal-total">
                     <h2 class="carrito-total-valor">
-                        {{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}
+                        {{ total$ | async | currency:'$ ':'symbol':'1.0-0' }}
                     </h2>
                 </td>
 

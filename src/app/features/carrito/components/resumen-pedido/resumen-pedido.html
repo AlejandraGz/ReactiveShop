@@ -16,7 +16,7 @@
 
         <div class="resumen-linea">
             <strong>Cantidad de productos: </strong>
-            <strong>{{ totalCantidadProductos() }}</strong>
+            <strong>{{ cantidadProductos$ | async }}</strong>
         </div>
 
         <div class="resumen-linea mensaje-envio">
@@ -27,7 +27,7 @@
 
         <div class="resumen-total">
             <h2>Total</h2>
-            <h2>{{ totalCarrito() | currency:'$ ':'symbol':'1.0-0' }}</h2>
+            <h2>{{ total$ | async | currency:'$ ':'symbol':'1.0-0' }}</h2>
         </div>
 
         <button class="btn-amarillo" routerLink="/checkout">

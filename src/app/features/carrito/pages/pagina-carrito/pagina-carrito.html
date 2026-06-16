@@ -1,4 +1,4 @@
-@if(productos.length > 0) {
+@if((cantidadProductos$ | async) != 0) {
 
 <div class="page carrito">
 
@@ -12,7 +12,7 @@
 
         </div>
 
-        @for(item of productos; track item.producto.id) {
+        @for(item of (productos$ | async); track item.producto.id) {
 
         <div class="carrito-item">
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../../../models/producto.model';
 import { Carrito } from '../../services/carrito';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
 import { ItemCarrito } from '../../models/carrito.model';
@@ -9,31 +9,30 @@ import { ItemCarrito } from '../../models/carrito.model';
 
 @Component({
   selector: 'app-sidebar-carrito',
-  imports: [CurrencyPipe, RouterLink, MatIcon],
+  imports: [CurrencyPipe, AsyncPipe, RouterLink, MatIcon],
   templateUrl: './sidebar-carrito.html',
   styleUrls: [
     './sidebar-carrito.css',
     '../../../../../styles/_variables.css'
   ]
 })
-export class SidebarCarrito implements OnInit {
-  productos: ItemCarrito[] = [];
+export class SidebarCarrito {
+  productos$;
+  total$;
+  cantidadProductos$;
+
   constructor(
     private carritoService: Carrito
-  ) { }
-
-  ngOnInit() {
-    this.carritoService.productos.subscribe(p => {
-      this.productos = p;
-    });
+  ) {
+    this.total$ = carritoService.total$;
+    this.cantidadProductos$ = carritoService.cantidadProductos$;
+    this.productos$ = carritoService.productos;
   }
+
   borrarProductoCarrito(producto: Producto) {
     this.carritoService.borrarProducto(producto)
   }
 
-  totalCarrito() {
-    return this.carritoService.totalCarrito()
-  }
   cantidadProducto(opcion: string, producto: Producto) {
     if(opcion === 'sumar'){
       this.carritoService.agregarProducto(producto)
