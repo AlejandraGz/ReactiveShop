@@ -17,4 +17,5 @@ export class Productos {
     return this.http.get<any>(this.url)
       .pipe(map(data => data.productos));
   }
+  
 }

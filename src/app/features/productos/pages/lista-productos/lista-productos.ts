@@ -22,6 +22,7 @@ export class ListaProductos implements OnInit {
     private route: ActivatedRoute
   ) { }
   productos$!: Observable<Producto[]>;
+  marcasFiltradas$!: Observable<string[]>;
 
   productoFiltro$ = new BehaviorSubject<string>('');
   categoriaFiltro$ = new BehaviorSubject<number | null>(null);
@@ -30,7 +31,6 @@ export class ListaProductos implements OnInit {
   precioMaxFiltro$ = new BehaviorSubject<number>(500000);
 
   mostrarFiltroCategoria = true;
-  marcasFiltradas$ = new BehaviorSubject<string[]>([]);
 
   actualizarProducto(producto: string) {
     this.productoFiltro$.next(producto);
@@ -139,20 +139,18 @@ export class ListaProductos implements OnInit {
       })
 
     )
-    combineLatest([
+    this.marcasFiltradas$ = combineLatest([
       productosBase$,
       this.categoriaFiltro$
-    ]).subscribe(([productos, categoriaId]) => {
+    ]).pipe(
+      map(([productos, categoriaId]) => {
+        const productosCategoria = categoriaId
+          ? productos.filter(p => p.categoriaId === categoriaId)
+          : productos;
 
-      const productosCategoria = categoriaId
-        ? productos.filter(p => p.categoriaId === categoriaId)
-        : productos;
-
-      this.marcasFiltradas$.next(
-        [...new Set(productosCategoria.map(p => p.marca))]
-      );
-
-    });
+        return [...new Set(productosCategoria.map(p => p.marca))]
+      })
+    )
 
   }
   slugify = (text: string) => text
