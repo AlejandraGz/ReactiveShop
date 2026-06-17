@@ -1,0 +1,14 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 1000;
+}
+
+.loader mat-spinner {
+  width: 60px !important;
+  height: 60px !important;
+}
