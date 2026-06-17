@@ -32,7 +32,6 @@
     width: 100%;
     justify-content: flex-end;
 }
-
 .icono-btn {
     background: transparent;
     border: none;
@@ -43,7 +42,9 @@
 .icono-btn:hover {
     transform: scale(1.1);
 }
-
+.carrito-btn {
+    margin-right: 4px;
+}
 .boton {
     padding-left: 20px;
     background-color: transparent;

@@ -1,19 +1,19 @@
 <mat-toolbar color="primary" class="navbar">
 
     <span class="logo" routerLink="/categorias">
-            <mat-icon>construction</mat-icon>
-         Milotuercas
+        <mat-icon>construction</mat-icon>
+        Milotuercas
     </span>
 
     <span class="spacer"></span>
 
     <div class="botones">
-        <button mat-icon-button routerLink="/carrito" matBadge="2" class="boton">Sobre Nosotros</button>
-        <button mat-icon-button routerLink="/productos" matBadge="2" class="boton">Productos</button>
-        <button mat-icon-button routerLink="/contacto" matBadge="2" class="boton">Contáctanos</button>
+        <button mat-icon-button routerLink="/carrito" class="boton">Sobre Nosotros</button>
+        <button mat-icon-button routerLink="/productos" class="boton">Productos</button>
+        <button mat-icon-button routerLink="/contacto"  class="boton">Contáctanos</button>
 
         <div class="icono-btns">
-            <button mat-icon-button class="icono-btn" routerLink="/carrito">
+            <button mat-icon-button class="icono-btn carrito-btn" routerLink="/carrito" [matBadge]="cantidadProductos$ | async">
                 <mat-icon>shopping_cart</mat-icon>
             </button>
 
