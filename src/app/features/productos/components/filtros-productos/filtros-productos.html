@@ -1,7 +1,7 @@
 <div class="filtros">
     <div class="item-filtro">
         <br>
-        <input type="text" placeholder="Buscar producto" (input)="buscarProducto($event)">
+        <input type="text" placeholder="Buscar producto" [formControl]="buscadorControl">
     </div>
     @if(mostrarFiltroCategoria) {
     <div class="item-filtro">
