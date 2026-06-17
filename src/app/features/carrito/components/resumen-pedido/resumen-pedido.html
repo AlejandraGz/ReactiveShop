@@ -23,6 +23,11 @@
             <span>Envío gratis en compras mayores a $150.000</span>
         </div>
 
+        <div class="resumen-linea">
+            <span>Te faltan {{ faltanteEnvio$ | async | currency:'$ ':'symbol':'1.0-0' }} para obtener envío
+                gratis.</span>
+        </div>
+
         <div class="linea-separadora"></div>
 
         <div class="resumen-total">

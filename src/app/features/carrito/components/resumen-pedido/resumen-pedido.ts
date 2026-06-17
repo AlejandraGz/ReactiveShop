@@ -11,6 +11,8 @@ import { RouterLink } from '@angular/router';
 })
 export class ResumenPedido {
 
+  envioGratis$
+  faltanteEnvio$
   total$;
   cantidadProductos$;
 
@@ -19,6 +21,8 @@ export class ResumenPedido {
   ) {
     this.total$ = carritoService.total$;
     this.cantidadProductos$ = carritoService.cantidadProductos$;
+    this.envioGratis$ = carritoService.envioGratis$
+    this.faltanteEnvio$ = carritoService.faltanteEnvio$
   }
 }
 

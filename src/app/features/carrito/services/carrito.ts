@@ -73,6 +73,12 @@ export class Carrito {
       productos.reduce(
         (total, item) => total + item.cantidad, 0
       )))
+  readonly envioGratis$ = this.total$.pipe(
+    map(total => total >= 150000)
+  );
+  readonly faltanteEnvio$ = this.total$.pipe(
+    map(total => Math.max(0, 150000 - total))
+  );
   private actualizarCarrito() {
 
     localStorage.setItem('Productos', JSON.stringify(this.carritoProductos));
