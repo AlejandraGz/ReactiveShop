@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
     '../../../../../styles/_variables.css']
 })
 export class CardProducto {
-  @Input() producto!: Producto;
+  @Input({ required: true }) producto!: Producto;
 
   slugify(text: string): string {
     return text
