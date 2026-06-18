@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Data } from '../../../../core/services/data';
 import { Producto } from '../../../../models/producto.model';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
@@ -8,6 +7,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { CardProducto } from "../../components/card-producto/card-producto";
 import { FiltrosProductos } from "../../components/filtros-productos/filtros-productos";
 import { Productos } from '../../services/productos';
+import { CategoriaService } from '../../../categorias/services/categoria';
 @Component({
   selector: 'app-lista-productos',
   imports: [CommonModule, CardProducto, FiltrosProductos],
@@ -17,7 +17,7 @@ import { Productos } from '../../services/productos';
 export class ListaProductos implements OnInit {
 
   constructor(
-    private dataService: Data,
+    private categoriaService: CategoriaService,
     private productoService: Productos,
     private route: ActivatedRoute
   ) { }
@@ -59,7 +59,7 @@ export class ListaProductos implements OnInit {
 
         const nombreSlug = params['nombre'];
 
-        return this.dataService.getCategorias().pipe(
+        return this.categoriaService.getCategorias().pipe(
           switchMap(categorias => {
 
             const categoria = categorias.find(

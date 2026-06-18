@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Categoria } from '../../../../models/categoria.model';
-import { Data } from '../../../../core/services/data';
-import { combineLatest, debounce, debounceTime, distinctUntilChanged, map, Observable, startWith } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Observable, startWith } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Productos } from '../../services/productos';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { CategoriaService } from '../../../categorias/services/categoria';
 
 @Component({
   selector: 'app-filtros-productos',
@@ -27,14 +27,14 @@ export class FiltrosProductos implements OnInit {
   productos$;
 
   buscadorControl = new FormControl('');
-  constructor(private dataService: Data, private productoService: Productos) {
+  constructor(private CategoriaService: CategoriaService, private productoService: Productos) {
 
     this.productos$ = productoService.getProductos();
 
   }
 
   ngOnInit(): void {
-    this.categorias$ = this.dataService.getCategorias();
+    this.categorias$ = this.CategoriaService.getCategorias();
 
       this.buscadorControl.valueChanges.pipe(
         debounceTime(300),
