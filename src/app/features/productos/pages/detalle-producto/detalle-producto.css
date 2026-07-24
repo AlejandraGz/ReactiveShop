@@ -2,16 +2,14 @@
     width: 100%;
     display: flex;
     align-items: flex-start;
+    padding-top: var(--navbar-height);
 }
 
 .detalle-wrapper {
     display: flex;
     justify-content: center;
     flex: 1;
-    padding:
-        calc(var(--navbar-height) + 30px)
-        30px
-        40px;
+    padding: 30px;
 }
 
 .detalle-producto {
@@ -44,6 +42,7 @@
     flex-shrink: 0;
 
     height: calc(100vh - var(--navbar-height));
+    max-height: calc(100vh - var(--navbar-height));
 
     position: sticky;
     top: var(--navbar-height);
@@ -56,9 +55,10 @@
 
     overflow-y: auto;
 
+    z-index: 900;
+
     animation: aparecerCarrito 0.7s ease;
 }
-
 @keyframes aparecerCarrito {
 
     0% {
