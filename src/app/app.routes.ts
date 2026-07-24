@@ -1,11 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { ListaProductos } from './features/productos/pages/lista-productos/lista-productos';
-import { ListaCategorias } from './features/categorias/pages/lista-categorias/lista-categorias';
-import { PaginaCarrito } from './features/carrito/pages/pagina-carrito/pagina-carrito';
-import { CheckoutPage } from './features/checkout/pages/checkout-page/checkout-page';
-import { DetalleProducto } from './features/productos/pages/detalle-producto/detalle-producto';
-
 export const routes: Routes = [
   {
     path: '',
@@ -14,27 +8,39 @@ export const routes: Routes = [
   },
   {
     path: 'categorias',
-    component: ListaCategorias
+    loadComponent: () =>
+      import('./features/categorias/pages/lista-categorias/lista-categorias')
+        .then(m => m.ListaCategorias)
   },
   {
     path: 'categoria/:nombre/productos',
-    component: ListaProductos
+    loadComponent: () =>
+      import('./features/productos/pages/lista-productos/lista-productos')
+        .then(m => m.ListaProductos)
   },
   {
     path: 'productos',
-    component: ListaProductos
+    loadComponent: () =>
+      import('./features/productos/pages/lista-productos/lista-productos')
+        .then(m => m.ListaProductos)
   },
   {
     path: 'producto/:nombre',
-    component: DetalleProducto
+    loadComponent: () =>
+      import('./features/productos/pages/detalle-producto/detalle-producto')
+        .then(m => m.DetalleProducto)
   },
   {
     path: 'carrito',
-    component: PaginaCarrito
+    loadComponent: () =>
+      import('./features/carrito/pages/pagina-carrito/pagina-carrito')
+        .then(m => m.PaginaCarrito)
   },
   {
     path: 'checkout',
-    component: CheckoutPage
+    loadComponent: () =>
+      import('./features/checkout/pages/checkout-page/checkout-page')
+        .then(m => m.CheckoutPage)
   },
   {
     path: '**',
