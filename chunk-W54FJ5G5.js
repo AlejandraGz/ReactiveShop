@@ -1,0 +1,1 @@
+import{eb as a,i as o,w as i,z as e}from"./chunk-XEVCLS7G.js";var p=class t{constructor(r){this.http=r}url="assets/data.json";getProductos(){return this.http.get(this.url).pipe(o(r=>r.productos))}static \u0275fac=function(n){return new(n||t)(e(a))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{p as a};
