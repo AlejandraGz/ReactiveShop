@@ -1,26 +1,57 @@
 <mat-toolbar color="primary" class="navbar">
 
-    <span class="logo" routerLink="/categorias">
-        <mat-icon>construction</mat-icon>
-        Milotuercas
-    </span>
+    <!-- Sección izquierda -->
+    <div class="left-section">
 
-    <span class="spacer"></span>
+        @if (isHandSet$ | async) {
+        <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+            <mat-icon>{{menuAbierto ? 'close' : 'menu'}}</mat-icon>
+        </button>
+        }
 
-    <div class="botones">
-        <button mat-icon-button routerLink="/carrito" class="boton">Sobre Nosotros</button>
-        <button mat-icon-button routerLink="/productos" class="boton">Productos</button>
-        <button mat-icon-button routerLink="/contacto"  class="boton">Contáctanos</button>
+        <span class="logo" routerLink="/categorias">
+            <mat-icon>construction</mat-icon>
 
-        <div class="icono-btns">
-            <button mat-icon-button class="icono-btn carrito-btn" routerLink="/carrito" [matBadge]="cantidadProductos$ | async">
-                <mat-icon>shopping_cart</mat-icon>
-            </button>
+            <span>Milotuercas</span>
+        </span>
 
-            <button mat-icon-button class="icono-btn" routerLink="/iniciar-sesion">
-                <mat-icon>account_circle</mat-icon>
-            </button>
-        </div>
+    </div>
+
+    <!-- Navegación escritorio -->
+    @if (!(isHandSet$ | async)) {
+
+    <div class="nav-links">
+        <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
+        <button mat-button routerLink="/productos" (click)="toggleMenu()">Productos</button>
+        <button mat-button routerLink="/contacto" (click)="toggleMenu()">Contáctanos</button>
+    </div>
+
+    }
+
+    <!-- Iconos -->
+    <div class="icono-btns">
+
+        <button mat-icon-button class="icono-btn carrito-btn" routerLink="/carrito"
+            [matBadge]="cantidadProductos$ | async">
+
+            <mat-icon>shopping_cart</mat-icon>
+
+        </button>
+
+        <button mat-icon-button class="icono-btn" routerLink="/iniciar-sesion">
+
+            <mat-icon>account_circle</mat-icon>
+
+        </button>
+
     </div>
 
 </mat-toolbar>
+
+@if (menuAbierto && (isHandSet$ | async)) {
+<div class="mobile-menu">
+    <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
+    <button mat-button routerLink="/productos" (click)="toggleMenu()">Productos</button>
+    <button mat-button routerLink="/contacto" (click)="toggleMenu()">Contáctanos</button>
+</div>
+}
