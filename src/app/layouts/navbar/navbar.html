@@ -3,7 +3,7 @@
     <!-- Sección izquierda -->
     <div class="left-section">
 
-        @if (isHandSet$ | async) {
+        @if (responsive.isHandset$| async) {
         <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
             <mat-icon>{{menuAbierto ? 'close' : 'menu'}}</mat-icon>
         </button>
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Navegación escritorio -->
-    @if (!(isHandSet$ | async)) {
+    @if (!(responsive.isHandset$| async)) {
 
     <div class="nav-links">
         <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
@@ -48,7 +48,7 @@
 
 </mat-toolbar>
 
-@if (menuAbierto && (isHandSet$ | async)) {
+@if (menuAbierto && (responsive.isHandset$ | async)) {
 <div class="mobile-menu">
     <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
     <button mat-button routerLink="/productos" (click)="toggleMenu()">Productos</button>

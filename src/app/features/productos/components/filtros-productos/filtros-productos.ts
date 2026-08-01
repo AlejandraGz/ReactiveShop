@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Productos } from '../../services/productos';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CategoriaService } from '../../../categorias/services/categoria';
+import { ResponsiveService } from '../../../../core/services/responsive';
 
 @Component({
   selector: 'app-filtros-productos',
@@ -22,12 +23,17 @@ export class FiltrosProductos implements OnInit {
   @Output() marca = new EventEmitter<string>();
   @Output() precioMin = new EventEmitter<number>();
   @Output() precioMax = new EventEmitter<number>();
+  @Output() cerrar = new EventEmitter<void>();
 
   categorias$!: Observable<Categoria[]>
   productos$;
 
   buscadorControl = new FormControl('');
-  constructor(private CategoriaService: CategoriaService, private productoService: Productos) {
+  constructor(
+    private CategoriaService: CategoriaService,
+    private productoService: Productos,
+    public responsive: ResponsiveService
+  ) {
 
     this.productos$ = productoService.getProductos();
 
@@ -36,21 +42,20 @@ export class FiltrosProductos implements OnInit {
   ngOnInit(): void {
     this.categorias$ = this.CategoriaService.getCategorias();
 
-      this.buscadorControl.valueChanges.pipe(
-        debounceTime(300),
-        distinctUntilChanged()
-      ).subscribe(texto => {
-        this.producto.emit(texto ?? '')
-      }
-    )
+  }
+  buscarProducto() {
+    this.producto.emit(this.buscadorControl.value ?? '');
+    this.cerrar.emit();
   }
   buscarCategoria(event: Event) {
-    const categoriaSeleccionada = event.target as HTMLInputElement;
-    this.categoria.emit(Number(categoriaSeleccionada.value));
+    const value = (event.target as HTMLSelectElement).value;
+    this.categoria.emit(value ? Number(value) : null);
+    this.cerrar.emit();
   }
   buscarMarca(event: Event) {
-    const marcaSeleccionada = event.target as HTMLInputElement;
-    this.marca.emit(marcaSeleccionada.value);
+    const value = (event.target as HTMLSelectElement).value;
+    this.marca.emit(value || '');
+    this.cerrar.emit();
   }
 
 

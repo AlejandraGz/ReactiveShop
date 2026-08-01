@@ -1,34 +1,53 @@
-<div class="filtros">
+<div class="filtros" [ngClass]="{
+        handSet: (responsive.isHandset$ | async),
+        web: !(responsive.isHandset$ | async)
+    }">
+
     <div class="item-filtro">
-        <br>
-        <input type="text" placeholder="Buscar producto" [formControl]="buscadorControl">
+        <input type="text" placeholder="Buscar producto" [formControl]="buscadorControl"
+            (keydown.enter)="buscarProducto()">
     </div>
-    @if(mostrarFiltroCategoria) {
+
+    @if (mostrarFiltroCategoria) {
     <div class="item-filtro">
-        <label>Categorias</label>
-        <select name="" id="" (change)="buscarCategoria($event)">
+        <label>Categoría</label>
+
+        <select (change)="buscarCategoria($event)">
             <option value="">Todas</option>
+
             @for (categoria of categorias$ | async; track categoria.id) {
-            <option [value]="categoria.id">{{categoria.nombre}}</option>
+            <option [value]="categoria.id">
+                {{ categoria.nombre }}
+            </option>
             }
+
         </select>
     </div>
     }
+
     <div class="item-filtro">
         <label>Marca</label>
-        <select name="" id="" (change)="buscarMarca($event)">
+
+        <select (change)="buscarMarca($event)">
             <option value="">Todas</option>
+
             @for (marca of marcas ?? []; track $index) {
-            <option [value]="marca">{{marca}}</option>
+            <option [value]="marca">
+                {{ marca }}
+            </option>
             }
+
         </select>
     </div>
+
     <div class="item-filtro">
         <label>Precio mínimo</label>
         <input class="precio" type="range" min="0" max="500000">
     </div>
-    <div class="item-filtro ">
+
+    <div class="item-filtro">
         <label>Precio máximo</label>
         <input class="precio" type="range" min="0" max="500000">
     </div>
+
 </div>

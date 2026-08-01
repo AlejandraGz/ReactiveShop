@@ -1,21 +1,55 @@
 .filtros {
-    margin-bottom: 15px;
     display: flex;
+    gap: 20px;
+    align-items: flex-end;
     justify-content: center;
+    margin-bottom: 20px;
 }
-.filtros .item-filtro {
-    margin: 0 15px;
+
+.item-filtro {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 6px;
 }
-.filtros .item-filtro label {
+
+.item-filtro label {
     font-weight: bold;
-    opacity: 0.8;
+    opacity: .8;
 }
-.filtros .item-filtro .precio {
-    width: 150px;
+
+.item-filtro input,
+.item-filtro select {
+    min-width: 180px;
+}
+
+.item-filtro .precio {
+    width: 180px;
     cursor: pointer;
-    color: var(--color-primary) !important;
     box-shadow: none;
+}
+
+/* Escritorio */
+
+.web {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Móvil */
+
+.handSet {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+}
+
+.handSet .item-filtro {
+    width: 100%;
+}
+
+.handSet .item-filtro input,
+.handSet .item-filtro select,
+.handSet .item-filtro .precio {
+    width: 100%;
+    min-width: unset;
 }

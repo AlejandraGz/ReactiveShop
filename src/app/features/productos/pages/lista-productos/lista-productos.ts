@@ -10,6 +10,9 @@ import { CardProducto } from '../../components/card-producto/card-producto';
 import { FiltrosProductos } from '../../components/filtros-productos/filtros-productos';
 import { Productos } from '../../services/productos';
 import { CategoriaService } from '../../../categorias/services/categoria';
+import { ResponsiveService } from '../../../../core/services/responsive';
+import { MatIcon } from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-lista-productos',
@@ -17,18 +20,20 @@ import { CategoriaService } from '../../../categorias/services/categoria';
   imports: [
     CommonModule,
     CardProducto,
-    FiltrosProductos
+    FiltrosProductos,
+    MatIcon,
+    MatButtonModule
   ],
   templateUrl: './lista-productos.html',
   styleUrl: './lista-productos.css',
 })
 export class ListaProductos implements OnInit {
-
   constructor(
     private categoriaService: CategoriaService,
     private productoService: Productos,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    public responsive: ResponsiveService
+  ) { }
 
   productos$!: Observable<Producto[]>;
   marcasFiltradas$!: Observable<string[]>;
@@ -39,6 +44,8 @@ export class ListaProductos implements OnInit {
   marcaFiltro$ = new BehaviorSubject<string>('');
   precioMinFiltro$ = new BehaviorSubject<number>(0);
   precioMaxFiltro$ = new BehaviorSubject<number>(500000);
+
+  filtrosAbiertos: boolean = false;
 
   actualizarProducto(producto: string) {
     this.productoFiltro$.next(producto);
@@ -58,6 +65,12 @@ export class ListaProductos implements OnInit {
 
   actualizarPrecioMax(precio: number) {
     this.precioMaxFiltro$.next(precio);
+  }
+  toggleFiltros() {
+    this.filtrosAbiertos = !this.filtrosAbiertos;
+  }
+  cerrarFiltros() {
+    this.filtrosAbiertos = false;
   }
 
   ngOnInit(): void {
@@ -170,8 +183,8 @@ export class ListaProductos implements OnInit {
         const lista = categoriaId == null
           ? productos
           : productos.filter(
-              p => p.categoriaId === categoriaId
-            );
+            p => p.categoriaId === categoriaId
+          );
 
         return [...new Set(lista.map(p => p.marca))];
 

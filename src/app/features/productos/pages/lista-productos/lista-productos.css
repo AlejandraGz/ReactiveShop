@@ -1,6 +1,61 @@
 .productos {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
     justify-content: center;
+    gap: 40px;
+}
+
+.filtros {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 16px;
+
+    border-radius: 8px;
+}
+
+.filtrosMobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+
+    background: var(--color-background, #fff);
+
+    overflow-y: auto;
+
+    box-shadow: 4px 0 12px rgba(0, 0, 0, .2);
+
+    z-index: 1001;
+
+    padding: 20px;
+}
+
+@media (max-width: 599px) {
+
+    .productos {
+        gap: 20px;
+    }
+
+    .filter-btn {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .filtrosMobile {
+        width: 100%;
+        max-width: 320px;
+    }
+
 }

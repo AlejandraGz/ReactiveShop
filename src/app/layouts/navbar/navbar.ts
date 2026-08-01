@@ -6,8 +6,8 @@ import { RouterLink } from '@angular/router';
 import { Carrito } from '../../features/carrito/services/carrito';
 import { AsyncPipe } from '@angular/common';
 import { MatBadge } from '@angular/material/badge';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, Observable, shareReplay } from 'rxjs';
+import { ResponsiveService } from '../../core/services/responsive';
 
 @Component({
   selector: 'app-navbar',
@@ -26,15 +26,10 @@ export class Navbar {
 
   constructor(
     private carritoService: Carrito,
-    private breakpointObserver: BreakpointObserver
+    public responsive: ResponsiveService
   ) {
     this.cantidadProductos$ = carritoService.cantidadProductos$
 
-    this.isHandSet$ = this.breakpointObserver
-      .observe(Breakpoints.Handset)
-      .pipe(
-        map(result => result.matches)
-      );
   }
   toggleMenu() {
     this.menuAbierto = !this.menuAbierto
