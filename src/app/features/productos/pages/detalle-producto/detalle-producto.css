@@ -6,21 +6,22 @@
 }
 
 .detalle-wrapper {
+    flex: 1;
+
     display: flex;
     justify-content: center;
-    flex: 1;
+
     padding: 30px;
 }
 
 .detalle-producto {
     width: 100%;
     max-width: 1000px;
+    min-height: 450px;
 
     display: flex;
 
-    min-height: 450px;
-
-    background-color: var(--color-card-background);
+    background: var(--color-card-background);
 
     border: 1px solid var(--color-border);
     border-radius: 10px;
@@ -28,26 +29,22 @@
     box-shadow: var(--shadow);
 
     overflow: hidden;
-
-    max-height: 500px;
 }
 
 .item {
     flex: 1;
-    max-height: 500px;
 }
 
 .sidebar-carrito {
     width: 400px;
     flex-shrink: 0;
 
-    height: calc(100vh - var(--navbar-height));
-    max-height: calc(100vh - var(--navbar-height));
-
     position: sticky;
     top: var(--navbar-height);
 
-    background-color: var(--color-card-background);
+    height: calc(100vh - var(--navbar-height));
+
+    background: var(--color-card-background);
 
     border-left: 1px solid var(--color-border);
 
@@ -57,8 +54,9 @@
 
     z-index: 900;
 
-    animation: aparecerCarrito 0.7s ease;
+    animation: aparecerCarrito .7s ease;
 }
+
 @keyframes aparecerCarrito {
 
     0% {
@@ -78,4 +76,30 @@
     100% {
         transform: translateX(0);
     }
+
+}
+
+/* ESCRITORIO */
+
+.web .detalle-producto {
+    flex-direction: row;
+}
+
+/* MÓVIL */
+
+.mobile {
+    padding-top: calc(var(--navbar-height) + 10px);
+}
+
+.mobile .detalle-wrapper {
+    padding: 16px;
+}
+
+.mobile .detalle-producto {
+    flex-direction: column;
+    min-height: auto;
+}
+
+.mobile .item {
+    width: 100%;
 }

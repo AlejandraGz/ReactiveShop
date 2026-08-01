@@ -8,6 +8,7 @@ import { ImagenProducto } from "../../components/imagen-producto/imagen-producto
 import { InfoProducto } from "../../components/info-producto/info-producto";
 import { Carrito } from '../../../carrito/services/carrito';
 import { SidebarCarrito } from "../../../carrito/pages/sidebar-carrito/sidebar-carrito";
+import { ResponsiveService } from '../../../../core/services/responsive';
 @Component({
   selector: 'app-detalle-producto',
   imports: [CommonModule, ImagenProducto, InfoProducto, SidebarCarrito],
@@ -22,6 +23,7 @@ export class DetalleProducto implements OnInit {
   constructor(
     private productoService: Productos,
     public carritoServicio: Carrito,
+    public responsive: ResponsiveService,
     private route: ActivatedRoute
   ) { }
 
