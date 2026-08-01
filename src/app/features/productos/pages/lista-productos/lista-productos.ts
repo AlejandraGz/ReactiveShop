@@ -1,16 +1,24 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Producto } from '../../../../models/producto.model';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
-import { CardProducto } from "../../components/card-producto/card-producto";
-import { FiltrosProductos } from "../../components/filtros-productos/filtros-productos";
+
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
+import { Producto } from '../../../../models/producto.model';
+import { CardProducto } from '../../components/card-producto/card-producto';
+import { FiltrosProductos } from '../../components/filtros-productos/filtros-productos';
 import { Productos } from '../../services/productos';
 import { CategoriaService } from '../../../categorias/services/categoria';
+
 @Component({
   selector: 'app-lista-productos',
-  imports: [CommonModule, CardProducto, FiltrosProductos],
+  standalone: true,
+  imports: [
+    CommonModule,
+    CardProducto,
+    FiltrosProductos
+  ],
   templateUrl: './lista-productos.html',
   styleUrl: './lista-productos.css',
 })
@@ -20,9 +28,11 @@ export class ListaProductos implements OnInit {
     private categoriaService: CategoriaService,
     private productoService: Productos,
     private route: ActivatedRoute
-  ) { }
+  ) {}
+
   productos$!: Observable<Producto[]>;
   marcasFiltradas$!: Observable<string[]>;
+  mostrarFiltroCategoria$!: Observable<boolean>;
 
   productoFiltro$ = new BehaviorSubject<string>('');
   categoriaFiltro$ = new BehaviorSubject<number | null>(null);
@@ -30,65 +40,70 @@ export class ListaProductos implements OnInit {
   precioMinFiltro$ = new BehaviorSubject<number>(0);
   precioMaxFiltro$ = new BehaviorSubject<number>(500000);
 
-  mostrarFiltroCategoria = true;
-
   actualizarProducto(producto: string) {
     this.productoFiltro$.next(producto);
   }
+
   actualizarCategoria(categoria: number | null) {
     this.categoriaFiltro$.next(categoria);
   }
+
   actualizarMarca(marca: string) {
     this.marcaFiltro$.next(marca);
   }
-  actualizarPrecioMin(precioMin: number) {
-    this.precioMinFiltro$.next(precioMin);
-  }
-  actualizarPrecioMax(precioMax: number) {
-    this.precioMaxFiltro$.next(precioMax);
+
+  actualizarPrecioMin(precio: number) {
+    this.precioMinFiltro$.next(precio);
   }
 
-
-
+  actualizarPrecioMax(precio: number) {
+    this.precioMaxFiltro$.next(precio);
+  }
 
   ngOnInit(): void {
-    const productosBase$ = this.route.params.pipe(
 
-      switchMap(params => {
-        this.mostrarFiltroCategoria = !params['nombre'];
+    const categorias$ = this.categoriaService.getCategorias().pipe(
+      shareReplay(1)
+    );
+
+    const productos$ = this.productoService.getProductos().pipe(
+      shareReplay(1)
+    );
+
+    this.mostrarFiltroCategoria$ = this.route.params.pipe(
+      map(params => !params['nombre'])
+    );
+
+    const productosBase$ = combineLatest([
+      productos$,
+      categorias$,
+      this.route.params
+    ]).pipe(
+
+      map(([productos, categorias, params]) => {
 
         const nombreSlug = params['nombre'];
 
-        return this.categoriaService.getCategorias().pipe(
-          switchMap(categorias => {
+        if (!nombreSlug) {
+          return productos;
+        }
 
-            const categoria = categorias.find(
-              c => this.slugify(c.nombre) === nombreSlug
-            );
-
-            //si no hay categoria en URL
-            if (!nombreSlug) {
-              return this.productoService.getProductos();
-            }
-
-            //si categoria no existe
-            if (!categoria) return this.productoService.getProductos().pipe(
-              map(() => [])
-            );
-
-            return this.productoService.getProductos().pipe(
-              map(productos => {
-
-                const productosFiltrados = productos.filter(
-                  p => p.categoriaId === categoria.id
-                );
-
-                return productosFiltrados;
-              })
-            );
-          })
+        const categoria = categorias.find(
+          c => this.slugify(c.nombre) === nombreSlug
         );
-      })
+
+        if (!categoria) {
+          return [];
+        }
+
+        return productos.filter(
+          producto => producto.categoriaId === categoria.id
+        );
+
+      }),
+
+      shareReplay(1)
+
     );
 
     this.productos$ = combineLatest([
@@ -101,27 +116,32 @@ export class ListaProductos implements OnInit {
     ]).pipe(
 
       map(([
+
         productos,
         texto,
         categoriaId,
         marca,
         precioMin,
         precioMax
+
       ]) => {
+
+        texto = texto.toLowerCase();
 
         return productos.filter(producto => {
 
-          const coincideTexto = producto.nombre.toLowerCase().includes(texto.toLowerCase());
+          const coincideTexto =
+            producto.nombre.toLowerCase().includes(texto);
 
           const coincideCategoria =
-            categoriaId
-              ? producto.categoriaId === categoriaId
-              : true;
+            categoriaId == null
+              ? true
+              : producto.categoriaId === categoriaId;
 
           const coincideMarca =
-            marca
-              ? producto.marca === marca
-              : true;
+            !marca
+              ? true
+              : producto.marca === marca;
 
           const coincidePrecio =
             producto.precio >= precioMin &&
@@ -138,24 +158,37 @@ export class ListaProductos implements OnInit {
 
       })
 
-    )
+    );
+
     this.marcasFiltradas$ = combineLatest([
       productosBase$,
       this.categoriaFiltro$
     ]).pipe(
-      map(([productos, categoriaId]) => {
-        const productosCategoria = categoriaId
-          ? productos.filter(p => p.categoriaId === categoriaId)
-          : productos;
 
-        return [...new Set(productosCategoria.map(p => p.marca))]
+      map(([productos, categoriaId]) => {
+
+        const lista = categoriaId == null
+          ? productos
+          : productos.filter(
+              p => p.categoriaId === categoriaId
+            );
+
+        return [...new Set(lista.map(p => p.marca))];
+
       })
-    )
+
+    );
 
   }
-  slugify = (text: string) => text
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+
+  private slugify(text: string): string {
+
+    return text
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
+  }
+
 }
