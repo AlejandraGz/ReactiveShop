@@ -6,11 +6,12 @@ import { RouterLink } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
 import { ItemCarrito } from '../../models/carrito.model';
 import { ResumenPedido } from "../../components/resumen-pedido/resumen-pedido";
-
+import { ResponsiveService } from '../../../../core/services/responsive';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pagina-carrito',
-  imports: [CurrencyPipe, AsyncPipe, RouterLink, MatIcon, ResumenPedido],
+  imports: [CurrencyPipe, AsyncPipe, RouterLink, MatIcon, ResumenPedido, CommonModule],
   templateUrl: './pagina-carrito.html',
   styleUrls: [
     './pagina-carrito.css',
@@ -21,7 +22,8 @@ export class PaginaCarrito {
   productos$;
   cantidadProductos$;
   constructor(
-    private carritoService: Carrito
+    private carritoService: Carrito,
+    public responsive: ResponsiveService
   ) {
     this.productos$ = carritoService.productos;
     this.cantidadProductos$ = carritoService.cantidadProductos$;

@@ -1,43 +1,37 @@
 @if((cantidadProductos$ | async) != 0) {
 
-<div class="page carrito">
+<div
+    class="page carrito"
+    [ngClass]="{
+        mobile: (responsive.isHandset$ | async),
+        web: !(responsive.isHandset$ | async)
+    }">
 
     <div class="carrito-lista">
 
         <div class="carrito-header">
-
             <h3>Producto</h3>
-            <h3>Cantidad</h3>
             <h3>Subtotal</h3>
-
         </div>
 
         @for(item of (productos$ | async); track item.producto.id) {
 
         <div class="carrito-item">
 
-            <div class="producto">
+            <img
+                class="producto-imagen"
+                [src]="item.producto.imagen"
+                [alt]="item.producto.nombre">
 
-                <img
-                    [src]="item.producto.imagen"
-                    [alt]="item.producto.nombre"
-                    class="producto-imagen">
+            <div class="producto-contenido">
 
-                <div class="producto-info">
+                <p
+                    class="producto-nombre"
+                    [routerLink]="['/producto', slugify(item.producto.nombre)]">
 
-                    <p
-                        class="producto-nombre"
-                        [routerLink]="['/producto', slugify(item.producto.nombre)]">
+                    {{ item.producto.nombre }}
 
-                        {{ item.producto.nombre }}
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="carrito-cantidad">
+                </p>
 
                 <div class="producto-cantidad">
 
@@ -67,21 +61,17 @@
 
             <div class="carrito-subtotal">
 
-                <div class="subtotal">
+                <p>
+                    {{ (item.producto.precio*item.cantidad  | currency:'$ ':'symbol':'1.0-0')}}
+                </p>
 
-                    <p>
-                        {{ item.producto.precio | currency:'$ ':'symbol':'1.0-0' }}
-                    </p>
+                <button
+                    class="carrito-eliminar"
+                    (click)="borrarProductoCarrito(item.producto)">
 
-                    <button
-                        class="carrito-eliminar"
-                        (click)="borrarProductoCarrito(item.producto)">
+                    <mat-icon>delete</mat-icon>
 
-                        <mat-icon>delete</mat-icon>
-
-                    </button>
-
-                </div>
+                </button>
 
             </div>
 

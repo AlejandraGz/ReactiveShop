@@ -1,33 +1,28 @@
 .carrito {
     display: flex;
-    gap: 35px;
-
+    gap: 30px;
+    align-items: flex-start;
 }
 
 .carrito-lista {
-    width: 70%;
+    flex: 1;
+    overflow: hidden;
 
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 14px;
 
-    background-color: var(--color-card-background);
-
-    overflow: hidden;
-}
-
-.carrito-header,
-.carrito-item {
-    display: grid;
-    grid-template-columns: 1.8fr 0.8fr 0.8fr;
-    gap: 20px;
-
-    align-items: center;
+    background: var(--color-card-background);
 }
 
 .carrito-header {
-    padding: 20px;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    padding: 18px 24px;
+
     border-bottom: 1px solid var(--color-border);
+
+    background: var(--color-background);
 }
 
 .carrito-header h3 {
@@ -35,15 +30,20 @@
 
     color: var(--color-text-light);
 
-    opacity: 0.7;
-
     font-size: 14px;
     font-weight: 600;
+
+    opacity: .7;
 }
 
-
 .carrito-item {
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 20px;
+
+    align-items: center;
+
+    padding: 20px 24px;
 
     border-bottom: 1px solid var(--color-border);
 }
@@ -52,101 +52,78 @@
     border-bottom: none;
 }
 
-.carrito-vacio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.producto {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
 .producto-imagen {
-    width: 80px;
-    height: 80px;
-
-    border-radius: 10px;
+    width: 90px;
+    aspect-ratio: 1;
 
     object-fit: cover;
+
+    border-radius: 12px;
 }
 
-.producto-info {
+.producto-contenido {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 14px;
 }
 
 .producto-nombre {
     margin: 0;
 
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
 
     cursor: pointer;
 
-    transition: opacity 0.2s ease;
+    transition: opacity .2s;
 }
 
 .producto-nombre:hover {
-    opacity: 0.7;
-    text-decoration: underline;
-}
-
-.carrito-cantidad {
-    display: flex;
-    justify-content: center;
+    opacity: .7;
 }
 
 .producto-cantidad {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+
+    width: fit-content;
 
     padding: 6px 10px;
 
     border: 1px solid var(--color-border);
     border-radius: 999px;
 
-    background-color: var(--color-background);
+    background: var(--color-background);
 }
 
 .cantidad-btn {
-    width: 28px;
-    height: 28px;
+    display: grid;
+    place-items: center;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 30px;
+    aspect-ratio: 1;
 
     border: none;
     border-radius: 50%;
 
-    background-color: var(--color-card-background);
-
-    color: var(--color-text-light);
+    background: var(--color-card-background);
 
     font-size: 18px;
     font-weight: bold;
 
     cursor: pointer;
 
-    transition:
-        background-color 0.2s ease,
-        transform 0.15s ease;
+    transition: background-color .2s;
 }
 
 .cantidad-btn:hover {
-    background-color: var(--color-border);
-}
-
-.cantidad-btn:active {
-    transform: scale(0.92);
+    background: var(--color-border);
 }
 
 .cantidad-numero {
-    min-width: 24px;
+    min-width: 22px;
 
     text-align: center;
 
@@ -155,56 +132,155 @@
 
 .carrito-subtotal {
     display: flex;
-    justify-content: flex-end;
-}
-
-.subtotal {
-    display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 18px;
 }
 
-.subtotal p {
+.carrito-subtotal p {
     margin: 0;
 
+    font-size: 18px;
     font-weight: 700;
 
     white-space: nowrap;
 }
 
 .carrito-eliminar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
 
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    aspect-ratio: 1;
 
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
 
     background: transparent;
 
+    color: #d9534f;
+
     cursor: pointer;
 
-    transition: background-color 0.2s ease;
+    transition: background-color .2s;
 }
 
 .carrito-eliminar:hover {
-    background-color: var(--color-border);
+    background: rgba(217, 83, 79, .12);
 }
 
 .carrito-total {
-    width: 30%;
-    height: fit-content;
-
-    padding: 30px;
-
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-
-    background-color: var(--color-card-background);
+    width: 340px;
 
     position: sticky;
     top: 30px;
+
+    padding: 24px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    background: var(--color-card-background);
+}
+
+.carrito-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+.mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile .carrito-lista,
+.mobile .carrito-total {
+    width: 100%;
+}
+
+.mobile .carrito-header {
+    display: none;
+}
+
+.mobile .carrito-lista {
+    border: none;
+    background: transparent;
+}
+
+.mobile .carrito-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    grid-template-areas:
+        "imagen contenido"
+        "imagen subtotal";
+
+    gap: 14px;
+
+    padding: 16px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    background: var(--color-card-background);
+}
+
+.mobile .producto-imagen {
+    grid-area: imagen;
+
+    width: 72px;
+}
+
+.mobile .producto-contenido {
+    grid-area: contenido;
+    gap: 12px;
+    align-items: center;
+}
+
+.mobile .producto-nombre {
+    font-size: 15px;
+}
+
+.mobile .producto-cantidad {
+    padding: 4px 8px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobile .cantidad-btn {
+    width: 26px;
+
+    font-size: 16px;
+}
+
+.mobile .carrito-subtotal {
+    grid-area: subtotal;
+
+    justify-content: space-between;
+
+    padding-top: 8px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+.mobile .carrito-subtotal p {
+    font-size: 17px;
+}
+
+.mobile .carrito-eliminar {
+    width: 34px;
+}
+
+.mobile .carrito-total {
+    position: static;
+}
+
+.page.mobile {
+    padding-top: var(--navbar-height);
+    padding-inline: 0;
 }
