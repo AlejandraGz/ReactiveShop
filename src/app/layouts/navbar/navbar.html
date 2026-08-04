@@ -21,9 +21,9 @@
     @if (!(responsive.isHandset$| async)) {
 
     <div class="nav-links">
-        <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
+        <button mat-button routerLink="/nosotros" (click)="toggleMenu()">Sobre Nosotros</button>
         <button mat-button routerLink="/productos" (click)="toggleMenu()">Productos</button>
-        <button mat-button routerLink="/contacto" (click)="toggleMenu()">Contáctanos</button>
+        <button mat-button routerLink="/contactanos" (click)="toggleMenu()">Contáctanos</button>
     </div>
 
     }
@@ -50,8 +50,8 @@
 
 @if (menuAbierto && (responsive.isHandset$ | async)) {
 <div class="mobile-menu">
-    <button mat-button routerLink="/carrito" (click)="toggleMenu()">Sobre Nosotros</button>
+    <button mat-button routerLink="/nosotros" (click)="toggleMenu()">Sobre Nosotros</button>
     <button mat-button routerLink="/productos" (click)="toggleMenu()">Productos</button>
-    <button mat-button routerLink="/contacto" (click)="toggleMenu()">Contáctanos</button>
+    <button mat-button routerLink="/contactanos" (click)="toggleMenu()">Contáctanos</button>
 </div>
 }

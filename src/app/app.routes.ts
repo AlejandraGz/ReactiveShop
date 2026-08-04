@@ -43,6 +43,24 @@ export const routes: Routes = [
         .then(m => m.CheckoutPage)
   },
   {
+    path: 'nosotros',
+    loadComponent: () =>
+      import('./features/informacion/pages/nosotros/nosotros')
+        .then(m => m.Nosotros)
+  },
+  {
+    path: 'contactanos',
+    loadComponent: () =>
+      import('./features/informacion/pages/contacto/contacto')
+        .then(m => m.Contacto)
+  },
+  {
+    path: 'sedes',
+    loadComponent: () =>
+      import('./features/informacion/pages/sedes/sedes')
+        .then(m => m.Sedes)
+  },
+  {
     path: '**',
     redirectTo: 'categorias'
   }
