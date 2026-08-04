@@ -1,1 +1,0 @@
-import{C as a,F as i,j as e,nb as o}from"./chunk-25GASXGV.js";var p=class t{constructor(r){this.http=r}url="assets/data.json";getCategorias(){return this.http.get(this.url).pipe(e(r=>r.categorias))}static \u0275fac=function(n){return new(n||t)(i(o))};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};export{p as a};

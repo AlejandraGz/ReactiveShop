@@ -1,0 +1,1 @@
+import{k as o}from"./chunk-VVUPKFOR.js";import{N as a,R as i,n as e}from"./chunk-L46DVGER.js";var p=class t{constructor(r){this.http=r}url="assets/data.json";getCategorias(){return this.http.get(this.url).pipe(e(r=>r.categorias))}static \u0275fac=function(n){return new(n||t)(i(o))};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};export{p as a};
