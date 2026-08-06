@@ -1,59 +1,209 @@
-# ReactiveShop
+# 🛒 ReactiveShop
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=for-the-badge&logo=angular)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)
+![RxJS](https://img.shields.io/badge/RxJS-7-B7178C?style=for-the-badge&logo=reactivex)
+![Angular Material](https://img.shields.io/badge/Angular%20Material-UI-757575?style=for-the-badge&logo=angular)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-## Development server
+## 📖 Descripción
 
-To start a local development server, run:
+**ReactiveShop** es una tienda virtual desarrollada con **Angular 21** como proyecto de práctica para fortalecer conocimientos en desarrollo Frontend moderno.
+
+La aplicación simula un e-commerce de una ferretería llamada **Milotuercas**, permitiendo navegar por productos, aplicar filtros, administrar un carrito de compras y realizar un proceso de checkout utilizando una arquitectura escalable y buenas prácticas de Angular.
+
+---
+
+## ✨ Características
+
+- 🏠 Página principal
+- 📦 Catálogo de productos
+- 🔍 Búsqueda y filtros
+- 📂 Categorías
+- 🛒 Carrito de compras
+- ➕ Agregar y eliminar productos
+- ➖ Modificar cantidades
+- 💲 Cálculo automático del total
+- 💳 Flujo de Checkout
+- 📱 Diseño Responsive
+- 🎨 Interfaz construida con Angular Material
+- ⚡ Manejo del estado mediante RxJS
+- 🔗 Navegación mediante Lazy Loading
+- 📄 Páginas informativas:
+  - Sobre Nosotros
+  - Contacto
+  - Sedes
+
+---
+
+# 🛠 Tecnologías
+
+- Angular 21
+- TypeScript
+- HTML5
+- CSS3
+- RxJS
+- Angular Material
+- Angular Router
+- JSON Server (API simulada)
+
+---
+
+# 📁 Estructura del proyecto
+
+```
+src/
+│
+├── app/
+│   ├── core/
+│   ├── shared/
+│   ├── features/
+│   │   ├── productos/
+│   │   ├── carrito/
+│   │   ├── checkout/
+│   │   └── informacion/
+│   ├── layouts/
+│   └── services/
+│
+├── assets/
+└── styles/
+```
+
+---
+
+# 🚀 Instalación
+
+Clona el repositorio
+
+```bash
+git clone https://github.com/AlejandraGz/ReactiveShop.git
+```
+
+Entra al proyecto
+
+```bash
+cd ReactiveShop
+```
+
+Instala las dependencias
+
+```bash
+npm install
+```
+
+Ejecuta la aplicación
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abre
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+# 🗄 API simulada
+
+Este proyecto utiliza **JSON Server** para simular un backend.
+
+Iniciar el servidor:
 
 ```bash
-ng generate --help
+json-server db.json
 ```
 
-## Building
 
-To build the project run:
+---
 
-```bash
-ng build
+# 🎯 Funcionalidades implementadas
+
+- [x] Catálogo de productos
+- [x] Detalle del producto
+- [x] Carrito de compras
+- [x] Persistencia del carrito
+- [x] Checkout
+- [x] Responsive Design
+- [x] Navbar adaptable
+- [x] Footer
+- [x] Lazy Loading
+- [x] Manejo reactivo con RxJS
+- [x] Componentes reutilizables
+- [x] Angular Material
+
+---
+
+# 📚 Conceptos de Angular aplicados
+
+- Standalone Components
+- Lazy Loading
+- Routing
+- Dependency Injection
+- Reactive Programming
+- Observables
+- Subjects
+- BehaviorSubject
+- Async Pipe
+- Component Communication
+- Input / Output
+- Services
+- Responsive Layout
+- Angular Material
+
+---
+
+# 📈 Próximas mejoras
+
+- Breadcrumbs para mejorar la navegación
+- Favoritos ❤️
+- Login de usuarios
+- Registro
+- Historial de compras
+- Pasarela de pagos
+- Consumo de API real
+- Autenticación JWT
+- Guards
+- Paginación
+- Modo oscuro
+
+---
+
+# 👩‍💻 Autor
+
+**Alejandra González Meléndez**
+
+Ingeniera Electrónica | Desarrolladora Frontend
+
+Tecnologías principales:
+
+- Angular
+- TypeScript
+- RxJS
+- JavaScript
+- HTML
+- CSS
+
+GitHub:
+
+```
+https://github.com/AlejandraGz
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+LinkedIn:
 
-## Running unit tests
+```
+https://www.linkedin.com/in/alejandra-gonzalez-melendez/
+```
+## 🌐 Demo
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```
+https://alejandragz.github.io/ReactiveShop
 ```
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+## 📄 Licencia
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este proyecto está distribuido bajo la licencia MIT. Consulta el archivo `LICENSE` para más información.
+---
